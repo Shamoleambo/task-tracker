@@ -4,9 +4,9 @@ import { Tasks } from './components/Tasks'
 
 function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, name: 'Task 1' },
-    { id: 2, name: 'Task 2' },
-    { id: 3, name: 'Task 3' }
+    { id: 1, text: 'Shopping', day: 'Apr 3rd at 3pm' },
+    { id: 2, text: 'Doctor Check up', day: 'Mar 24th at 7:30am' },
+    { id: 3, text: 'Vet', day: 'Mar 12th at 12:30pm' }
   ])
 
   return (
