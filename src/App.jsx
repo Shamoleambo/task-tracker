@@ -4,16 +4,7 @@ import { Tasks } from './components/Tasks'
 import { AddTask } from './components/AddTask'
 
 function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Shopping', day: 'Apr 3rd at 3pm', reminder: false },
-    {
-      id: 2,
-      text: 'Doctor Check up',
-      day: 'Mar 24th at 7:30am',
-      reminder: false
-    },
-    { id: 3, text: 'Vet', day: 'Mar 12th at 12:30pm', reminder: false }
-  ])
+  const [tasks, setTasks] = useState([])
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
@@ -27,11 +18,16 @@ function App() {
     )
   }
 
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 100000) + 1
+    setTasks((prevState) => [...prevState, { id, ...task }])
+  }
+
   return (
     <>
       <div className='container'>
         <Header title='Task Tracker' />
-        <AddTask />
+        <AddTask onAddTask={addTask} />
         {tasks.length > 0 ? (
           <Tasks
             tasks={tasks}
