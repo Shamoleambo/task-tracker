@@ -4,6 +4,7 @@ import { Tasks } from './components/Tasks'
 import { AddTask } from './components/AddTask'
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
 
   const deleteTask = (id) => {
@@ -23,11 +24,15 @@ function App() {
     setTasks((prevState) => [...prevState, { id, ...task }])
   }
 
+  const toggleForm = () => {
+    setShowAddTask(prevState => !prevState)
+  }
+
   return (
     <>
       <div className='container'>
-        <Header title='Task Tracker' />
-        <AddTask onAddTask={addTask} />
+        <Header title='Task Tracker' showAddTask={showAddTask} toggleForm={toggleForm} />
+        {showAddTask && <AddTask onAddTask={addTask} />}
         {tasks.length > 0 ? (
           <Tasks
             tasks={tasks}

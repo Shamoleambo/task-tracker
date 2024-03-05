@@ -1,10 +1,14 @@
 import { Button } from './Button'
 
-export function Header({ title }) {
+export function Header({ title, showAddTask, toggleForm }) {
   return (
     <header className='header'>
       <h1>{title}</h1>
-      <Button color='green' text='Add' />
+      <Button
+        color={showAddTask ? 'red' : 'green'}
+        text={showAddTask ? 'Close' : 'Add'}
+        onClick={toggleForm}
+      />
     </header>
   )
 }
